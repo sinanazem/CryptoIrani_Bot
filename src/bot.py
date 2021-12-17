@@ -2,12 +2,9 @@ import os
 import telebot
 from src.api.api import doge,btc
 from loguru import logger
-# CryptoIrani_Bot
 
-<<<<<<< HEAD
-# bot = telebot.TeleBot(os.environ['NASHENAS_BOT_TOKEN'])
-# 5008852964:AAFkLqhkdnk2Nx8cFvoqlE-sZju-mSJASro
-=======
+
+
 bot = telebot.TeleBot(os.environ['TELEGRAM_BOT_TOKEN'])
 
 >>>>>>> 263cd2542a135a73280bc9d5e6455e3ee8c026de
