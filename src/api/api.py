@@ -1,37 +1,22 @@
 import requests
+from datetime import datetime
 
-def doge():
-    api = requests.get("https://sochain.com//api/v2/get_price/DOGE")
-    j_api = api.json()
-    name = j_api['data']['network']
-    btc,usd = dict(),dict()
-    for coin in j_api['data']['prices']:
+class Crypto:
 
-        if coin['price_base'] == 'BTC' :
-            btc['price_base'] = coin['price_base']
-            btc['price'] = coin['price']
-
-        if coin['price_base'] == 'USD' :
-            usd['price_base'] = coin['price_base']
-            usd['price'] = coin['price']
-
-        return f"The price of {name} is {usd['price']} dollars."
+    def __init__(self,name):
+        self.name = name
+        self.api = requests.get(f"https://sochain.com//api/v2/get_price/{self.name}")
+        self.json_api = self.api.json()
 
 
-def btc():
-    api = requests.get("https://sochain.com//api/v2/get_price/BTC")
-    j_api = api.json()
-    name = j_api['data']['network']
-    btc,usd = dict(),dict()
-    for coin in j_api['data']['prices']:
+    def price(self):
 
-        if coin['price_base'] == 'BTC' :
-            btc['price_base'] = coin['price_base']
-            btc['price'] = coin['price']
+        for coin in self.json_api['data']['prices']:
 
-        if coin['price_base'] == 'USD' :
-            usd['price_base'] = coin['price_base']
-            usd['price'] = coin['price']
+            if coin.get('price_base') == 'USD' :
+                print(datetime.utcfromtimestamp(int(coin.get('time'))).strftime('%Y-%m-%d %H:%M:%S'))
+                print('-'*50)
+                return f"{self.name} price:{coin.get('price')} Dollar"
 
-        return f"The price of {name} is {usd['price']} dollars."
-
+            if coin.get('price_base') == 'EUR' :
+                return f"{self.name} price:{coin.get('price')} Euro"

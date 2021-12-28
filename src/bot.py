@@ -1,20 +1,9 @@
 import os
 import telebot
-from src.api.api import doge,btc
+from src.api.api import Crypto
 from loguru import logger
 
-<<<<<<< HEAD
-# bot = telebot.TeleBot(os.environ['NASHENAS_BOT_TOKEN'])
-# 5008852964:AAFkLqhkdnk2Nx8cFvoqlE-sZju-mSJASro
-=======
-
-
-bot = telebot.TeleBot(os.environ['TELEGRAM_BOT_TOKEN'])
-
-
->>>>>>> 6c8ce777a37364bd706f0a4835389494ba1d3e58
-
-bot = telebot.TeleBot("5008852964:AAFkLqhkdnk2Nx8cFvoqlE-sZju-mSJASro")
+bot = telebot.TeleBot("2132611794:AAHmt-xSMAffOIdujvG5VRN_8iqsRB4CeXo")
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.reply_to(message, "Howdy, how are you doing?")
@@ -22,14 +11,14 @@ def send_welcome(message):
 @bot.message_handler(commands=['doge','DOGE','Doge'])
 def doge_coin(message):
     logger.info("doge...")
-    a = doge()
-    bot.send_message(message.chat.id, f"{a}")
+    a = Crypto('doge')
+    bot.send_message(message.chat.id, f"{a.price()}")
 
 @bot.message_handler(commands=['btc','BTC','Bitcoin','BITCOIN'])
-def doge_coin(message):
+def btc_coin(message):
     logger.info("bitcoin...")
-    a = btc()
-    bot.send_message(message.chat.id, f"{a}")
+    a = Crypto('btc')
+    bot.send_message(message.chat.id, f"{a.price()}")
 
 bot.infinity_polling()
 
