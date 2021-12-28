@@ -3,7 +3,7 @@ import telebot
 from src.api.api import Crypto
 from loguru import logger
 
-bot = telebot.TeleBot("2132611794:AAHmt-xSMAffOIdujvG5VRN_8iqsRB4CeXo")
+bot = telebot.TeleBot(os.environ(['TOKEN')
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.reply_to(message, "Howdy, how are you doing?")
