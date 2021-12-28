@@ -3,7 +3,10 @@ import telebot
 from src.api.api import Crypto
 from loguru import logger
 
-bot = telebot.TeleBot(os.environ(['TOKEN')
+telegram_bot_token = os.environ['TELEGRAMBOT_TOKEN']
+bot = telebot.TeleBot(telegram_bot_token)
+logger.info("Bot start...")
+
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.reply_to(message, "Howdy, how are you doing?")
