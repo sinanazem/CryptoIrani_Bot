@@ -1,8 +1,11 @@
 import os
+
 import telebot
-from src.api.api import Crypto
 from loguru import logger
+
+from src.api.api import Crypto
 from src.keyboard import create_keybord
+
 telegram_bot_token = os.environ['TELEGRAMBOT_TOKEN']
 
 class Bot():
