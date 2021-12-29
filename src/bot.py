@@ -2,7 +2,7 @@ import os
 import telebot
 from src.api.api import Crypto
 from loguru import logger
-
+from src.keyboard import create_keybord
 telegram_bot_token = os.environ['TELEGRAMBOT_TOKEN']
 
 class Bot():
@@ -14,7 +14,7 @@ class Bot():
 
         @self.bot.message_handler(commands=['start', 'help'])
         def send_welcome(message):
-            self.bot.reply_to(message, "Howdy, how are you doing?")
+            self.bot.reply_to(message, "Howdy, how are you doing?",reply_markup=create_keybord('Bitcoin'))
 
         @self.bot.message_handler(commands=['doge','DOGE','Doge'])
         def doge_coin(message):
