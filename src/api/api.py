@@ -16,7 +16,7 @@ class Crypto:
             if coin.get('price_base') == 'USD' :
                 print(datetime.utcfromtimestamp(int(coin.get('time'))).strftime('%Y-%m-%d %H:%M:%S'))
                 print('-'*50)
-                return f"{self.name} price:{coin.get('price')} Dollar"
+                print(f"{self.name} price:{coin.get('price')} Dollar")
 
             if coin.get('price_base') == 'EUR' :
-                return f"{self.name} price:{coin.get('price')} Euro"
+                print(f"{self.name} price:{coin.get('price')} Euro")
